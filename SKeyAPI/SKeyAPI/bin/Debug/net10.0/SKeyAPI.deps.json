@@ -9,7 +9,11 @@
       "SKeyAPI/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.OpenApi": "10.0.10",
-          "Microsoft.OpenApi": "2.7.5"
+          "Microsoft.OpenApi": "2.7.5",
+          "SKey.Application": "1.0.0",
+          "SKey.Domain": "1.0.0",
+          "SKey.Infrastructure": "1.0.0",
+          "SKey.Persistence": "1.0.0"
         },
         "runtime": {
           "SKeyAPI.dll": {}
@@ -31,6 +35,48 @@
           "lib/net8.0/Microsoft.OpenApi.dll": {
             "assemblyVersion": "2.7.5.0",
             "fileVersion": "2.7.5.0"
+          }
+        }
+      },
+      "SKey.Application/1.0.0": {
+        "dependencies": {
+          "SKey.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SKey.Application.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SKey.Domain/1.0.0": {
+        "runtime": {
+          "SKey.Domain.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SKey.Infrastructure/1.0.0": {
+        "dependencies": {
+          "SKey.Application": "1.0.0"
+        },
+        "runtime": {
+          "SKey.Infrastructure.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "SKey.Persistence/1.0.0": {
+        "dependencies": {
+          "SKey.Application": "1.0.0",
+          "SKey.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SKey.Persistence.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
           }
         }
       }
@@ -55,6 +101,26 @@
       "sha512": "sha512-0FA67RSnRM4tcBKqiqVu/HPdZ9+QOKbmeRjxRUGTCjPU4C0bmUhd97Dso7Yild5P7nOV6GxJ2xrK0Kv/O9xp0w==",
       "path": "microsoft.openapi/2.7.5",
       "hashPath": "microsoft.openapi.2.7.5.nupkg.sha512"
+    },
+    "SKey.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SKey.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SKey.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SKey.Persistence/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

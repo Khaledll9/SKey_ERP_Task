@@ -11,4 +11,11 @@
     <PackageReference Include="Microsoft.OpenApi" Version="2.7.5" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SKey.Application\SKey.Application.csproj" />
+    <ProjectReference Include="..\SKey.Domain\SKey.Domain.csproj" />
+    <ProjectReference Include="..\SKey.Infrastructure\SKey.Infrastructure.csproj" />
+    <ProjectReference Include="..\SKey.Persistence\SKey.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>

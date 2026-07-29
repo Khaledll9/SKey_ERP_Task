@@ -32,3 +32,12 @@ D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\obj\Debug\net10.0\refint\SKeyAPI.dll
 D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\obj\Debug\net10.0\SKeyAPI.pdb
 D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\obj\Debug\net10.0\SKeyAPI.genruntimeconfig.cache
 D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\obj\Debug\net10.0\ref\SKeyAPI.dll
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Application.dll
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Domain.dll
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Infrastructure.dll
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Persistence.dll
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Application.pdb
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Domain.pdb
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Infrastructure.pdb
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\SKey.Persistence.pdb
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\obj\Debug\net10.0\SKeyAPI.sourcelink.json

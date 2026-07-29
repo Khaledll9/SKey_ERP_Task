@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="SKey.Application/SKey.Application.csproj" />
+  <Project Path="SKey.Domain/SKey.Domain.csproj" />
+  <Project Path="SKey.Infrastructure/SKey.Infrastructure.csproj" />
+  <Project Path="SKey.Persistence/SKey.Persistence.csproj" />
   <Project Path="SKeyAPI/SKeyAPI.csproj" />
 </Solution>
