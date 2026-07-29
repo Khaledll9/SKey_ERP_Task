@@ -15,30 +15,39 @@ public class UserService : IUserService
         _context = context;
     }
 
-    public async Task<bool> RegisterUserAsync(RegisterUserDto registerUserDto)
+    public async Task<ServiceResult> RegisterUserAsync(RegisterUserDto registerUserDto)
     {
-       
-        var userExists = await _context.Users
-            .AnyAsync(u => u.Email == registerUserDto.Email);
-
-        if (userExists)
+        if (await _context.Users.AnyAsync(u => u.Email == registerUserDto.Email))
         {
-            return false;
+            return ServiceResult.Failure("The email address is already registered.");
         }
 
-       
+        if (!string.IsNullOrEmpty(registerUserDto.PhoneNumber) &&
+                                  await _context.Users.AnyAsync(u => u.PhoneNumber == registerUserDto.PhoneNumber))
+        {
+            return ServiceResult.Failure("The phone number is already registered.");
+        }
+
+        var adminRoleId = Guid.Parse("00000000-0000-0000-0000-000000000000");
+
         var user = new User
         {
-            UserName = registerUserDto.Username,
+            UserName = registerUserDto.UserName,
+            PhoneNumber = registerUserDto.PhoneNumber,
             Email = registerUserDto.Email,
-            Password = registerUserDto.Password, 
-            RoleId = registerUserDto.RoleId
+            Password = registerUserDto.Password,
+            RoleId = registerUserDto.RoleId ?? adminRoleId,
         };
 
-        
+
         await _context.Users.AddAsync(user);
         var result = await _context.SaveChangesAsync();
 
-        return result > 0;
+        if (result > 0)
+        {
+            return ServiceResult.Success("The user has been successfully registered.");
+        }
+
+        return ServiceResult.Failure("An error occurred while saving the data.");
     }
 }

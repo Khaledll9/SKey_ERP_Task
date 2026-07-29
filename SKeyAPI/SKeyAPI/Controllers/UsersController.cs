@@ -20,11 +20,11 @@ public class UsersController : ControllerBase
     {
         var result = await _userService.RegisterUserAsync(registerUserDto);
 
-        if (!result)
+        if (!result.IsSuccess)
         {
-            return BadRequest(new { message = "User already exists or registration failed." });
+            return BadRequest(new { message = result.Message });
         }
 
-        return Ok(new { message = "User registered successfully!" });
+        return Ok(new { message = result.Message });
     }
 }

@@ -54,7 +54,10 @@
       "RegisterUserDto": {
         "type": "object",
         "properties": {
-          "username": {
+          "userName": {
+            "type": "string"
+          },
+          "phoneNumber": {
             "type": "string"
           },
           "email": {
@@ -67,7 +70,10 @@
             "$ref": "#/components/schemas/AccountStatus"
           },
           "roleId": {
-            "type": "string",
+            "type": [
+              "null",
+              "string"
+            ],
             "format": "uuid"
           }
         }
