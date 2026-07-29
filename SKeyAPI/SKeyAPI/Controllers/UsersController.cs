@@ -27,4 +27,16 @@ public class UsersController : ControllerBase
 
         return Ok(new { message = result.Message });
     }
+    [HttpPost("signin")]
+    public async Task<IActionResult> SignIn([FromBody] SignInDto signInDto)
+    {
+        var result = await _userService.SignInAsync(signInDto);
+
+        if (!result.IsSuccess)
+        {
+            return BadRequest(new { message = result.Message });
+        }
+
+        return Ok(new { message = result.Message });
+    }
 }

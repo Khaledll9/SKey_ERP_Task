@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿namespace SKey.Application.DTOs;
 
-namespace SKey.Application.DTOs
+public class SignInDto
 {
-    internal class SignInDto
-    {
-    }
+    public string EmailOrPhone { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
 }

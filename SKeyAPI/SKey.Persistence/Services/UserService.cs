@@ -50,4 +50,17 @@ public class UserService : IUserService
 
         return ServiceResult.Failure("An error occurred while saving the data.");
     }
+    public async Task<ServiceResult> SignInAsync(SignInDto signInDto)
+    {
+        var user = await _context.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Email == signInDto.EmailOrPhone || u.PhoneNumber == signInDto.EmailOrPhone);
+
+        if (user == null || user.Password != signInDto.Password)
+        {
+            return ServiceResult.Failure("Something went wrong, User Registration failed.");
+        }
+
+        return ServiceResult.Success("Sign in successful!");
+    }
 }

@@ -44,6 +44,38 @@
           }
         }
       }
+    },
+    "/api/Users/signin": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -75,6 +107,17 @@
               "string"
             ],
             "format": "uuid"
+          }
+        }
+      },
+      "SignInDto": {
+        "type": "object",
+        "properties": {
+          "emailOrPhone": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
           }
         }
       }

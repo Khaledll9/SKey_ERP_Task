@@ -14,5 +14,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SKeyAPI.Controllers.UsersController",
+    "Method": "SignIn",
+    "RelativePath": "api/Users/signin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "signInDto",
+        "Type": "SKey.Application.DTOs.SignInDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
