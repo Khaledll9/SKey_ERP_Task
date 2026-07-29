@@ -10,5 +10,4 @@ public class RegisterUserDto
     public string Password { get; set; } = string.Empty;
     public AccountStatus AccountStatus { get; set; } = AccountStatus.Active ;
 
-    public Guid? RoleId { get; set; }
 }

@@ -1,13 +1,14 @@
 ﻿namespace SKey.Application.DTOs;
 
-public class ServiceResult
+public class ServiceResult<T>
 {
     public bool IsSuccess { get; set; }
     public string Message { get; set; } = string.Empty;
+    public T? Data { get; set; }
 
-    public static ServiceResult Success(string message = "The operation was completed successfully.")
-        => new ServiceResult { IsSuccess = true, Message = message };
+    public static ServiceResult<T> Success(T data, string message = "The operation was completed successfully.")
+        => new ServiceResult<T> { IsSuccess = true, Message = message, Data = data };
 
-    public static ServiceResult Failure(string message)
-        => new ServiceResult { IsSuccess = false, Message = message };
+    public static ServiceResult<T> Failure(string message)
+        => new ServiceResult<T> { IsSuccess = false, Message = message };
 }

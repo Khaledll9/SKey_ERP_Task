@@ -100,13 +100,6 @@
           },
           "accountStatus": {
             "$ref": "#/components/schemas/AccountStatus"
-          },
-          "roleId": {
-            "type": [
-              "null",
-              "string"
-            ],
-            "format": "uuid"
           }
         }
       },

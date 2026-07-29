@@ -9,26 +9,26 @@ namespace SKey.Persistence.Services;
 public class UserService : IUserService
 {
     private readonly AppDbContext _context;
+    private readonly JwtTokenGenerator _jwtTokenGenerator;
 
-    public UserService(AppDbContext context)
+    public UserService(AppDbContext context, JwtTokenGenerator jwtTokenGenerator)
     {
         _context = context;
+        _jwtTokenGenerator = jwtTokenGenerator;
     }
 
-    public async Task<ServiceResult> RegisterUserAsync(RegisterUserDto registerUserDto)
+    public async Task<ServiceResult<string>> RegisterUserAsync(RegisterUserDto registerUserDto)
     {
         if (await _context.Users.AnyAsync(u => u.Email == registerUserDto.Email))
         {
-            return ServiceResult.Failure("The email address is already registered.");
+            return ServiceResult<string>.Failure("The email address is already registered.");
         }
 
         if (!string.IsNullOrEmpty(registerUserDto.PhoneNumber) &&
-                                  await _context.Users.AnyAsync(u => u.PhoneNumber == registerUserDto.PhoneNumber))
+            await _context.Users.AnyAsync(u => u.PhoneNumber == registerUserDto.PhoneNumber))
         {
-            return ServiceResult.Failure("The phone number is already registered.");
+            return ServiceResult<string>.Failure("The phone number is already registered.");
         }
-
-        var adminRoleId = Guid.Parse("00000000-0000-0000-0000-000000000000");
 
         var user = new User
         {
@@ -36,21 +36,23 @@ public class UserService : IUserService
             PhoneNumber = registerUserDto.PhoneNumber,
             Email = registerUserDto.Email,
             Password = registerUserDto.Password,
-            RoleId = registerUserDto.RoleId ?? adminRoleId,
+            RoleId = Guid.Empty
         };
 
 
         await _context.Users.AddAsync(user);
         var result = await _context.SaveChangesAsync();
 
+        var token = _jwtTokenGenerator.GenerateToken(user);
+
         if (result > 0)
         {
-            return ServiceResult.Success("The user has been successfully registered.");
+            return ServiceResult<string>.Success(token, "User registered successfully.");
         }
 
-        return ServiceResult.Failure("An error occurred while saving the data.");
+        return ServiceResult<string>.Failure("An error occurred while saving the data.");
     }
-    public async Task<ServiceResult> SignInAsync(SignInDto signInDto)
+    public async Task<ServiceResult<string>> SignInAsync(SignInDto signInDto)
     {
         var user = await _context.Users
             .AsNoTracking()
@@ -58,9 +60,11 @@ public class UserService : IUserService
 
         if (user == null || user.Password != signInDto.Password)
         {
-            return ServiceResult.Failure("Something went wrong, User Registration failed.");
+            return ServiceResult<string>.Failure("Something went wrong, User Registration failed.");
         }
+        var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return ServiceResult.Success("Sign in successful!");
+        return ServiceResult<string>.Success(token, "Sign in successful.");
+
     }
 }

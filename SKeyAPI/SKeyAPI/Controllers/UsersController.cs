@@ -25,7 +25,7 @@ public class UsersController : ControllerBase
             return BadRequest(new { message = result.Message });
         }
 
-        return Ok(new { message = result.Message });
+        return Ok(new { token = result.Data, message = result.Message });
     }
     [HttpPost("signin")]
     public async Task<IActionResult> SignIn([FromBody] SignInDto signInDto)
@@ -37,6 +37,6 @@ public class UsersController : ControllerBase
             return BadRequest(new { message = result.Message });
         }
 
-        return Ok(new { message = result.Message });
+        return Ok(new { token = result.Data, message = result.Message });
     }
 }
