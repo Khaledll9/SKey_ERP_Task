@@ -1,0 +1,6 @@
+@SKeyAPI_HostAddress = http://localhost:5049
+
+GET {{SKeyAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
