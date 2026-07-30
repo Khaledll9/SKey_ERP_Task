@@ -1,5 +1,5 @@
 export interface SignInRequest {
-  email: string;
+  emailOrPhone: string;
   password: string;
 }
 
@@ -7,7 +7,7 @@ export interface RegisterRequest {
   userName: string;
   email: string;
   password: string;
-  phoneNumber : string;
+  phoneNumber: string;
 }
 
 export interface AuthResponse {

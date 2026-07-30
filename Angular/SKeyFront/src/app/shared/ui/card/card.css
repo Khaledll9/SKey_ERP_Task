@@ -1,0 +1,30 @@
+.skey-card {
+  background-color: #fff;
+  border: 1px solid #f1f5f9;
+  border-radius: var(--radius-card-sm);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft-card);
+  transition: all 0.3s ease;
+}
+
+.skey-card--hoverable:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transform: translateY(-0.125rem);
+}
+
+.skey-card--bordered {
+  border-color: #e2e8f0;
+}
+
+.skey-card__header {
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.skey-card__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0;
+}

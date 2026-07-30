@@ -1,0 +1,13 @@
+<div
+  class="skey-card"
+  [ngClass]="{ 'skey-card--hoverable': hoverable, 'skey-card--bordered': bordered }"
+>
+  @if (title) {
+    <div class="skey-card__header">
+      <h3 class="skey-card__title">{{ title }}</h3>
+    </div>
+  }
+  <div class="skey-card__body">
+    <ng-content></ng-content>
+  </div>
+</div>
