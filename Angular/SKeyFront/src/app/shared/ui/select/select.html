@@ -1,0 +1,18 @@
+<div class="skey-select">
+  @if (label) {
+    <label class="skey-select__label">{{ label }}</label>
+  }
+  <select
+    class="skey-select__field"
+    [ngModel]="value"
+    (ngModelChange)="onModelChange($event)"
+    (blur)="onTouched()"
+    [disabled]="disabled">
+    @if (placeholder) {
+      <option value="" disabled>{{ placeholder }}</option>
+    }
+    @for (opt of options; track opt.value) {
+      <option [value]="opt.value">{{ opt.label }}</option>
+    }
+  </select>
+</div>

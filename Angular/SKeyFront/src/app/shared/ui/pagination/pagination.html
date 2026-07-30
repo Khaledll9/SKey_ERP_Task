@@ -1,0 +1,39 @@
+<div class="skey-pagination">
+  <div class="skey-pagination__nav">
+    <button
+      type="button"
+      (click)="selectPage(pageIndex - 1)"
+      [disabled]="pageIndex <= 1"
+      class="skey-pagination__btn"
+      aria-label="السابق">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="skey-pagination__icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+      </svg>
+    </button>
+
+    @for (page of pages; track page) {
+      <button
+        type="button"
+        (click)="selectPage(page)"
+        class="skey-pagination__page"
+        [ngClass]="{ 'skey-pagination__page--active': page === pageIndex }">
+        {{ page }}
+      </button>
+    }
+
+    <button
+      type="button"
+      (click)="selectPage(pageIndex + 1)"
+      [disabled]="pageIndex >= totalPages"
+      class="skey-pagination__btn"
+      aria-label="التالي">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="skey-pagination__icon">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+      </svg>
+    </button>
+  </div>
+
+  <p class="skey-pagination__info">
+    عرض {{ getStartItem() }} إلى {{ getEndItem() }} من أصل {{ total }} {{ itemType }}
+  </p>
+</div>

@@ -38,6 +38,6 @@ export class AuthService {
     localStorage.setItem('skey_token', token);
     this.token.set(token);
     this.isAuthenticated.set(true);
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/users']);
   }
 }
