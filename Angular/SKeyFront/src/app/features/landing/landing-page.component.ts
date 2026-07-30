@@ -13,6 +13,11 @@ interface Feature {
   desc: string;
 }
 
+interface Sector {
+  icon: SafeHtml | string;
+  label: string;
+}
+
 @Component({
   selector: 'app-landing-page',
   standalone: true,
@@ -73,10 +78,57 @@ export class LandingPageComponent {
     },
   ];
 
+  protected readonly sectors: Sector[] = [
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5v6M9 10.5v6M3.75 6h16.5M3.75 6l1.5 9h13.5l1.5-9M3.75 6H18m-6-4a5 5 0 0 0-5 5v2h10V7a5 5 0 0 0-5-5z" /></svg>`,
+      label: 'سوبر ماركت',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M10 7.5h4M12 7.5V5m0 0V3m0 2h3.5a1.5 1.5 0 0 1 1.5 1.5V7m0 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0zM6 10a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v10a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V10z" /></svg>`,
+      label: 'عطور ومواد عناية',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V4.5a2.25 2.25 0 0 1 2.25-2.25h1.5A2.25 2.25 0 0 1 15 4.5v2.25m-9 0h12A2.25 2.25 0 0 1 20.25 9v9a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18V9A2.25 2.25 0 0 1 6 6.75zm6 4.25v5.5m-2.75-2.75h5.5" /></svg>`,
+      label: 'صيدليات',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M6 3v7a3 3 0 0 0 3 3v8M9 3v5M12 3v7a3 3 0 0 1-3 3M18 3v18M18 3h2.5a2.5 2.5 0 0 1 2.5 2.5v5a2.5 2.5 0 0 1-2.5 2.5H18" /></svg>`,
+      label: 'مطاعم وكافيهات',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 5.25v13.5m4.5-13.5l10.5 6.75-10.5 6.75V5.25z" /></svg>`,
+      label: 'إعلام وترفيه',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /><path stroke-linecap="round" stroke-linejoin="round" d="m19 5-4 4M21.5 6.5a2.12 2.12 0 0 0-3-3L11 11l3 3z" /></svg>`,
+      label: 'مراكز صيانة',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><rect x="2.25" y="3.75" width="13.5" height="10.5" rx="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M6 14.25v3.75M12 14.25v3.75M3.75 18h10.5" stroke-linecap="round" stroke-linejoin="round" /><rect x="15.75" y="8.25" width="6" height="12" rx="1.5" stroke-linecap="round" stroke-linejoin="round" /><path d="M18.75 17.25h.008v.008h-.008v-.008z" stroke-linecap="round" stroke-linejoin="round" /></svg>`,
+      label: 'إلكترونيات',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 21V8.25a.75.75 0 0 1 .75-.75h5.25a.75.75 0 0 1 .75.75V21m0-12.75l5.25-3a.75.75 0 0 1 1.07.67V21M7.5 11.25h.008v.008H7.5v-.008zm0 3.75h.008v.008H7.5v-.008zm0 3.75h.008v.008H7.5v-.008zm6-7.5h.008v.008h-.008v-.008zm0 3.75h.008v.008h-.008v-.008zm0 3.75h.008v.008h-.008v-.008z" /></svg>`,
+      label: 'شركات عقارية',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="size-9"><path stroke-linecap="round" stroke-linejoin="round" d="M18 3H6a3 3 0 0 0-3 3v9a3 3 0 0 0 3 3v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2h6v2a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-2a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 8.25h12M7.5 13.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zm6 0a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z" /></svg>`,
+      label: 'خدمات المواصلات',
+    },
+    {
+      icon: `<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="size-9"><circle cx="12" cy="12" r="2.25" /><circle cx="5" cy="12" r="2.25" /><circle cx="19" cy="12" r="2.25" /></svg>`,
+      label: 'والمزيد',
+    },
+  ];
+
   constructor() {
     this.features = this.features.map((f) => ({
       ...f,
       icon: this.sanitizer.bypassSecurityTrustHtml(f.icon as string),
+    }));
+    this.sectors = this.sectors.map((s) => ({
+      ...s,
+      icon: this.sanitizer.bypassSecurityTrustHtml(s.icon as string),
     }));
   }
 }

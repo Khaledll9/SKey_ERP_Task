@@ -407,3 +407,145 @@
   line-height: 1.625;
   margin: 0;
 }
+
+.lp-sectors {
+  background-color: #0b1e60;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.lp-sectors-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  pointer-events: none;
+}
+
+.lp-sectors-blob--tr {
+  top: 0;
+  right: 0;
+  width: 18rem;
+  height: 18rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: translate(50%, -50%);
+}
+
+.lp-sectors-blob--bl {
+  bottom: 0;
+  left: 0;
+  width: 20rem;
+  height: 20rem;
+  background-color: rgba(22, 163, 74, 0.1);
+  transform: translate(-33%, 33%);
+}
+
+.lp-sectors-inner {
+  position: relative;
+}
+
+.lp-sectors-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .lp-sectors-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.lp-sectors-title {
+  font-size: 1.875rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .lp-sectors-title {
+    font-size: 2.5rem;
+  }
+}
+
+.lp-sectors-desc {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  margin-top: 0.75rem;
+}
+
+.lp-sectors-header-btn {
+  flex-shrink: 0;
+  padding-bottom: 0.25rem;
+}
+
+.lp-sectors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .lp-sectors-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .lp-sectors-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.lp-sector-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background-color: rgba(22, 47, 138, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 2rem;
+  cursor: default;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.lp-sector-card:hover {
+  background-color: rgba(22, 47, 138, 0.6);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.lp-sector-icon {
+  width: 2.25rem;
+  height: 2.25rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.lp-sector-card:hover .lp-sector-icon {
+  transform: scale(1.1);
+}
+
+.lp-sector-icon svg {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+
+.lp-sector-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}

@@ -106,4 +106,34 @@
       </div>
     </div>
   </section>
+
+  <section class="lp-sectors">
+    <div class="lp-sectors-blob lp-sectors-blob--tr"></div>
+    <div class="lp-sectors-blob lp-sectors-blob--bl"></div>
+
+    <div class="lp-container lp-sectors-inner">
+      <div class="lp-sectors-header">
+        <div>
+          <h2 class="lp-sectors-title">قطاعات الأعمال التي نخدمها</h2>
+          <p class="lp-sectors-desc">
+            تم تصميم SKeyERP ليكون مرناً بما يكفي لتلبية احتياجات مختلف الصناعات.
+          </p>
+        </div>
+        <div class="lp-sectors-header-btn">
+          <skey-button variant="success" size="lg">
+            عرض كافة القطاعات
+          </skey-button>
+        </div>
+      </div>
+
+      <div class="lp-sectors-grid">
+        @for (sector of sectors; track $index) {
+        <div class="lp-sector-card">
+          <div class="lp-sector-icon" [innerHTML]="sector.icon"></div>
+          <span class="lp-sector-label">{{ sector.label }}</span>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
 </div>
