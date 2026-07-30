@@ -89,4 +89,27 @@ public class UserService : IUserService
 
         return ServiceResult<bool>.Success(true, "تم إنشاء المستخدم بنجاح.");
     }
+
+    public async Task<ServiceResult<bool>> UpdateUserAsync(UpdateUserDto dto)
+    {
+        var user = await _context.Users.FindAsync(dto.Id);
+        if (user == null)
+        {
+            return ServiceResult<bool>.Failure("المستخدم غير موجود.");
+        }
+
+        user.UserName = dto.UserName;
+        user.Email = dto.Email;
+        user.AccountStatus = dto.AccountStatus;
+
+        if (dto.RoleId.HasValue)
+        {
+            user.RoleId = dto.RoleId.Value;
+        }
+
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<bool>.Success(true, "تم تعديل بيانات المستخدم بنجاح.");
+    }
 }
