@@ -126,4 +126,19 @@ public class UserService : IUserService
 
         return ServiceResult<bool>.Success(true, "تم حذف المستخدم بنجاح.");
     }
+
+    public async Task<List<UserDto>> GetAllUsersAsync()
+    {
+        return await _context.Users
+            .AsNoTracking()
+            .Select(u => new UserDto
+            {
+                Id = u.Id,
+                UserName = u.UserName,
+                Email = u.Email,
+                RoleId = u.RoleId,
+                AccountStatus = u.AccountStatus
+            })
+            .ToListAsync();
+    }
 }

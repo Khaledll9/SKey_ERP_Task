@@ -1,18 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using SKey.Domain.Enums;
+﻿using SKey.Domain.Enums;
 
 namespace SKey.Application.DTOs;
 
-public class CreateUserDto
+public class UserDto
 {
-    [Required(ErrorMessage = "اسم المستخدم مطلوب")]
+    public Guid Id { get; set; }
     public string UserName { get; set; } = string.Empty;
-
-    [Required(ErrorMessage = "البريد الإلكتروني مطلوب")]
-    [EmailAddress(ErrorMessage = "صيغة البريد الإلكتروني غير صحيحة")]
     public string Email { get; set; } = string.Empty;
-
-    public Guid? RoleId { get; set; }
-
-    public AccountStatus AccountStatus { get; set; } = AccountStatus.Active;
+    public Guid RoleId { get; set; }
+    public AccountStatus AccountStatus { get; set; }
 }

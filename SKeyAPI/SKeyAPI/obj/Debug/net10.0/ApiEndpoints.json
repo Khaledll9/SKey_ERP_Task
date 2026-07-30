@@ -1,6 +1,16 @@
 [
   {
     "ContainingType": "SKeyAPI.Controllers.UsersController",
+    "Method": "GetAll",
+    "RelativePath": "api/Users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SKeyAPI.Controllers.UsersController",
     "Method": "Delete",
     "RelativePath": "api/Users/{id}",
     "HttpMethod": "DELETE",
