@@ -1,0 +1,78 @@
+<div class="users-filter">
+  <skey-input
+    class="users-filter__search"
+    placeholder="البحث بالاسم أو البريد الإلكتروني..."
+    [ngModel]="searchQuery"
+    (ngModelChange)="updateQuery($event)"
+    iconRight="<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='users-filter__search-icon'><path stroke-linecap='round' stroke-linejoin='round' d='m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z' /></svg>">
+  </skey-input>
+
+  <div class="users-filter__dropdown" (click)="toggleRoleDropdown()">
+    <button
+      type="button"
+      class="users-filter__pill"
+      [ngClass]="{ 'users-filter__pill--active': selectedRole }">
+      {{ selectedRole ? getRoleLabel(selectedRole) : 'كل الأدوار' }}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+        stroke="currentColor" class="users-filter__chevron"
+        [class.users-filter__chevron--open]="showRoleDropdown">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </button>
+    @if (showRoleDropdown) {
+      <div class="users-filter__menu">
+        <div (click)="updateRole(null)"
+          class="users-filter__menu-item"
+          [ngClass]="{ 'users-filter__menu-item--selected': !selectedRole }">
+          كل الأدوار
+        </div>
+        @for (opt of roleOptions; track opt.value) {
+          <div (click)="updateRole(opt.value)"
+            class="users-filter__menu-item"
+            [ngClass]="{ 'users-filter__menu-item--selected': selectedRole === opt.value }">
+            {{ opt.label }}
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="users-filter__dropdown" (click)="toggleStatusDropdown()">
+    <button
+      type="button"
+      class="users-filter__pill"
+      [ngClass]="{ 'users-filter__pill--active': selectedStatus }">
+      {{ selectedStatus ? (selectedStatus === 'active' ? 'نشط' : 'غير نشط') : 'كل الحالات' }}
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
+        stroke="currentColor" class="users-filter__chevron"
+        [class.users-filter__chevron--open]="showStatusDropdown">
+        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      </svg>
+    </button>
+    @if (showStatusDropdown) {
+      <div class="users-filter__menu">
+        <div (click)="updateStatus(null)"
+          class="users-filter__menu-item"
+          [ngClass]="{ 'users-filter__menu-item--selected': !selectedStatus }">
+          كل الحالات
+        </div>
+        @for (opt of statusOptions; track opt.value) {
+          <div (click)="updateStatus(opt.value)"
+            class="users-filter__menu-item"
+            [ngClass]="{ 'users-filter__menu-item--selected': selectedStatus === opt.value }">
+            {{ opt.label }}
+          </div>
+        }
+      </div>
+    }
+  </div>
+
+  <button type="button" class="users-filter__advanced">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+      stroke="currentColor" class="users-filter__advanced-icon">
+      <path stroke-linecap="round" stroke-linejoin="round"
+        d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+    </svg>
+    تصفية متقدمة
+  </button>
+</div>

@@ -107,3 +107,30 @@
   </footer>
 
 </div>
+
+@if (showLogoutConfirm()) {
+  <div class="logout-overlay" dir="rtl" role="dialog" aria-modal="true">
+    <div class="logout-backdrop"></div>
+    <div class="logout-panel">
+      <div class="logout-header">
+        <h3 class="logout-title">تأكيد تسجيل الخروج</h3>
+        <button
+          type="button"
+          (click)="cancelLogout()"
+          class="logout-close"
+          aria-label="إغلاق">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="logout-close-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="logout-body">
+        <p class="logout-text">هل أنت متأكد من تسجيل الخروج؟</p>
+        <div class="logout-actions">
+          <button type="button" (click)="cancelLogout()" class="logout-cancel">إلغاء</button>
+          <button type="button" (click)="confirmLogout()" class="logout-confirm">تأكيد</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

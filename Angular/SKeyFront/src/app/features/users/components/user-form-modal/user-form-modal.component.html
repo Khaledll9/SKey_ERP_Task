@@ -1,0 +1,79 @@
+<div class="modal-overlay" role="dialog" aria-modal="true">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-panel">
+    <div class="modal-header">
+      <h3 class="modal-title">{{ title }}</h3>
+      <button
+        type="button"
+        (click)="onClose()"
+        [disabled]="loading"
+        class="modal-close"
+        aria-label="إغلاق">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="modal-close-icon">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="userForm" (ngSubmit)="submit()" class="modal-form">
+        <skey-input
+          label="اسم المستخدم"
+          placeholder="أدخل اسم المستخدم الكامل"
+          formControlName="name">
+        </skey-input>
+
+        <skey-input
+          label="البريد الإلكتروني"
+          placeholder="example@skeyerp.com"
+          type="email"
+          formControlName="email">
+        </skey-input>
+
+        @if (mode === 'create') {
+          <skey-input
+            label="كلمة المرور"
+            placeholder="أدخل كلمة المرور"
+            type="password"
+            formControlName="password">
+          </skey-input>
+        }
+
+        <div class="modal-grid">
+          <skey-select
+            label="الدور الوظيفي"
+            placeholder="اختر الدور"
+            [options]="roleOptions"
+            formControlName="role">
+          </skey-select>
+
+          <skey-select
+            label="الحالة"
+            placeholder="اختر الحالة"
+            [options]="statusOptions"
+            formControlName="status">
+          </skey-select>
+        </div>
+
+        @if (errorMessage) {
+          <p class="modal-error">{{ errorMessage }}</p>
+        }
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            (click)="onClose()"
+            [disabled]="loading"
+            class="modal-cancel">
+            إلغاء
+          </button>
+
+          <skey-button variant="primary" type="submit" [disabled]="userForm.invalid" [loading]="loading">
+            حفظ البيانات
+          </skey-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

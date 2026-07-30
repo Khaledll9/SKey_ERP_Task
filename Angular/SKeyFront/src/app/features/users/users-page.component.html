@@ -1,0 +1,78 @@
+<div class="users-page" dir="rtl">
+  <users-header (openCreate)="openCreate()"></users-header>
+
+  <div class="users-page__card">
+    <users-filter (filterChange)="onFilterChange($event)"></users-filter>
+
+    <users-table
+      [users]="users()"
+      (edit)="openEdit($event)"
+      (delete)="askDeleteUser($event)">
+    </users-table>
+
+    <skey-pagination
+      [total]="totalUsers"
+      [pageIndex]="currentPage"
+      [pageSize]="pageSize"
+      itemType="مستخدم"
+      (pageIndexChange)="onPageChange($event)">
+    </skey-pagination>
+  </div>
+</div>
+
+@if (showUserModal()) {
+  <user-form-modal
+    [mode]="modalMode()"
+    [user]="editingUser()"
+    (closed)="closeUserModal()"
+    (saved)="onUserSaved()">
+  </user-form-modal>
+}
+
+@if (userPendingDelete(); as user) {
+  <div class="delete-overlay" dir="rtl" role="dialog" aria-modal="true">
+    <div class="delete-backdrop"></div>
+    <div class="delete-panel">
+      <div class="delete-header">
+        <h3 class="delete-title">تأكيد الحذف</h3>
+        <button
+          type="button"
+          (click)="cancelDelete()"
+          [disabled]="deleteLoading()"
+          class="delete-close"
+          aria-label="إغلاق">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="delete-close-icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="delete-body">
+        <p class="delete-text">
+          هل أنت متأكد من حذف المستخدم
+          <span class="delete-text--bold">{{ user.name }}</span>؟
+          <br />
+          لا يمكن التراجع عن هذا الإجراء.
+        </p>
+        <div class="delete-actions">
+          <button
+            type="button"
+            (click)="cancelDelete()"
+            [disabled]="deleteLoading()"
+            class="delete-cancel">
+            إلغاء
+          </button>
+          <button
+            type="button"
+            (click)="confirmDelete()"
+            [disabled]="deleteLoading()"
+            class="delete-confirm">
+            @if (deleteLoading()) {
+              <span class="delete-spinner"></span>
+            }
+            تأكيد الحذف
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+}

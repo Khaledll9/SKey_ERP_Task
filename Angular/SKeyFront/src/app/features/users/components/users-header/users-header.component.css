@@ -1,0 +1,36 @@
+.users-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .users-header {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.users-header__text {
+  text-align: right;
+}
+
+.users-header__title {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 900;
+  color: #0f2963;
+  letter-spacing: -0.025em;
+}
+
+.users-header__subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.users-header__icon {
+  width: 1rem;
+  height: 1rem;
+}
