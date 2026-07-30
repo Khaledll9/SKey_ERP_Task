@@ -1,13 +1,21 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, booleanAttribute, inject, ChangeDetectionStrategy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { SkeyButtonComponent } from '../../shared/ui/button/button';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-landing-page',
   standalone: true,
-  template: `
-    <div style="max-width:80rem;margin:0 auto;padding:2rem 1.5rem;text-align:right" dir="rtl">
-      <h1 style="margin:0;font-size:26px;font-weight:900;color:#0f2963">الصفحة الرئيسية</h1>
-    </div>
-  `,
+  imports: [CommonModule, RouterLink, SkeyButtonComponent],
+  templateUrl: './landing-page.component.html',
+  styleUrl: './landing-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LandingPageComponent {}
+export class LandingPageComponent {
+  private sanitizer = inject(DomSanitizer);
+
+  @Input({ transform: booleanAttribute }) embedded = false;
+
+  constructor() {}
+}

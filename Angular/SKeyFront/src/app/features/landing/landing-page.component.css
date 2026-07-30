@@ -1,0 +1,97 @@
+.lp-root {
+  min-height: 100vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Tajawal', sans-serif;
+}
+
+.lp-container {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.lp-navbar {
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #f1f5f9;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.lp-navbar-inner {
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-navbar-start {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.lp-logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.lp-logo {
+  width: 7rem;
+}
+
+.lp-nav {
+  display: none;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .lp-nav {
+    display: flex;
+  }
+}
+
+.lp-nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.lp-nav-link:hover {
+  color: #0b1e60;
+}
+
+.lp-nav-link--active {
+  color: #0b1e60;
+  font-weight: 700;
+  border-bottom: 2px solid #102f90;
+  padding-bottom: 0.125rem;
+}
+
+.lp-navbar-end {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.lp-login-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.lp-login-link:hover {
+  color: #102f90;
+}

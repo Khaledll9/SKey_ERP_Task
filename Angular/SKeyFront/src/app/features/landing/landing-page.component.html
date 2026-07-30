@@ -1,0 +1,25 @@
+<div class="lp-root" dir="rtl">
+  @if (!embedded) {
+  <header class="lp-navbar">
+    <div class="lp-container lp-navbar-inner">
+      <div class="lp-navbar-start">
+        <a routerLink="/" class="lp-logo-link">
+          <img src="/assets/images/logo.jpeg" class="lp-logo" />
+        </a>
+        <nav class="lp-nav">
+          <a href="#" class="lp-nav-link lp-nav-link--active">Products</a>
+          <a href="#features" class="lp-nav-link">Features</a>
+          <a href="#pricing" class="lp-nav-link">Pricing</a>
+          <a href="#about" class="lp-nav-link">Resources</a>
+        </nav>
+      </div>
+      <div class="lp-navbar-end">
+        <a routerLink="/auth/login" class="lp-login-link">Login</a>
+        <skey-button variant="primary" size="md" link="/auth/register">
+          Start Free Trial
+        </skey-button>
+      </div>
+    </div>
+  </header>
+  }
+</div>

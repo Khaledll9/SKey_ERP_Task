@@ -5,7 +5,11 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'auth/login' },
+  {
+    path: '',
+    loadComponent: () =>
+      import('./features/landing/landing-page.component').then((m) => m.LandingPageComponent)
+  },
 
   {
     path: 'auth',
@@ -59,11 +63,5 @@ export const routes: Routes = [
     ]
   },
 
-  {
-    path: 'landing',
-    loadComponent: () =>
-      import('./features/landing/landing-page.component').then((m) => m.LandingPageComponent)
-  },
-
-  { path: '**', redirectTo: 'auth/login' }
+  { path: '**', redirectTo: '' }
 ];
