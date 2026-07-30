@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -9,6 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './button.css'
 })
 export class SkeyButtonComponent {
+  private router = inject(Router);
+
   @Input() variant:
     | 'primary'
     | 'default'
@@ -23,10 +26,17 @@ export class SkeyButtonComponent {
   @Input() block = false;
   @Input() disabled = false;
   @Input() loading = false;
+  @Input() link?: string;
 
   get variantClasses(): string {
     const sizeClass = `skey-btn--${this.size}`;
     const variantClass = `skey-btn--${this.variant}`;
     return `skey-btn ${sizeClass} ${variantClass}${this.block ? ' skey-btn--block' : ''}`;
+  }
+
+  onClick(event: Event) {
+    if (this.disabled || this.loading || !this.link) return;
+    event.preventDefault();
+    void this.router.navigateByUrl(this.link);
   }
 }

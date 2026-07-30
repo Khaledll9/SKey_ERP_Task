@@ -1,6 +1,6 @@
 .lp-root {
   min-height: 100vh;
-  background-color: #fff;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   font-family: 'Tajawal', sans-serif;
@@ -693,7 +693,7 @@
 }
 
 .lp-cta {
-  background-color: #fff;
+  background-color: transparent;
   padding-top: 4rem;
   padding-bottom: 4rem;
 }

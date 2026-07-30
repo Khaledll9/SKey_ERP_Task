@@ -25,6 +25,22 @@
   --radius-card-lg: 1rem;
 }
 
+*, ::before, ::after {
+    font-family: 'Tajawal', sans-serif;
+}
+
+button, 
+input, 
+select, 
+textarea {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
 html {
   direction: rtl;
 }
@@ -34,6 +50,9 @@ body {
   min-height: 100vh;
   font-family: 'Tajawal', sans-serif;
   font-size: 1.125rem;
+  background:
+    radial-gradient(circle at top left, rgba(182, 185, 189, 0.8) 0%, rgba(255, 255, 255, 0) 20%),
+    radial-gradient(circle at bottom right, rgba(150, 255, 150, 0.8) 0%, rgba(255, 255, 255, 0) 30%);
   background-color: #f8fafc;
   color: #0f172a;
 }
