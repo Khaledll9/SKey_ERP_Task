@@ -51,8 +51,8 @@ body {
   font-family: 'Tajawal', sans-serif;
   font-size: 1.125rem;
   background:
-    radial-gradient(circle at top left, rgba(182, 185, 189, 0.8) 0%, rgba(255, 255, 255, 0) 20%),
-    radial-gradient(circle at bottom right, rgba(150, 255, 150, 0.8) 0%, rgba(255, 255, 255, 0) 30%);
+    radial-gradient(circle at top left, rgba(182, 185, 189, 0.5) 0%, rgba(255, 255, 255, 0) 20%),
+    radial-gradient(circle at bottom right, rgba(150, 255, 150, 0.7) 0%, rgba(255, 255, 255, 0) 30%);
   background-color: #f8fafc;
   color: #0f172a;
 }
