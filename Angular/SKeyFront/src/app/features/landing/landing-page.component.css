@@ -691,3 +691,285 @@
   color: #0f2963;
   margin: 0;
 }
+
+.lp-cta {
+  background-color: #fff;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.lp-cta-card {
+  position: relative;
+  background-color: #002d72;
+  border-radius: 2.5rem;
+  padding: 4rem 2rem;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .lp-cta-card {
+    padding: 4rem 4rem;
+  }
+}
+
+.lp-cta-circle {
+  position: absolute;
+  width: 18rem;
+  height: 18rem;
+  border-radius: 9999px;
+  border: 30px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.lp-cta-circle--tr {
+  right: -6rem;
+  top: -6rem;
+}
+
+.lp-cta-circle--bl {
+  left: -6rem;
+  bottom: -6rem;
+}
+
+.lp-cta-content {
+  position: relative;
+  z-index: 10;
+  max-width: 48rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.lp-cta-title {
+  font-size: 1.875rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .lp-cta-title {
+    font-size: 2.25rem;
+  }
+}
+
+.lp-cta-desc {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  line-height: 1.75;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .lp-cta-desc {
+    font-size: 1.125rem;
+  }
+}
+
+.lp-break-md {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .lp-break-md {
+    display: inline;
+  }
+}
+
+.lp-cta-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+@media (min-width: 640px) {
+  .lp-cta-actions {
+    flex-direction: row;
+  }
+}
+
+.lp-cta-btn {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .lp-cta-btn {
+    width: auto;
+  }
+}
+
+.lp-footer {
+  background-color: #fff;
+  color: #64748b;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+.lp-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 4rem;
+  text-align: right;
+}
+
+@media (min-width: 640px) {
+  .lp-footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .lp-footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.lp-footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.lp-footer-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.lp-footer-logo {
+  width: 7rem;
+}
+
+.lp-footer-brand-desc {
+  font-size: 0.875rem;
+  color: #64748b;
+  line-height: 1.75;
+  max-width: 20rem;
+  margin: 0;
+}
+
+.lp-footer-heading {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f2963;
+  margin: 0;
+}
+
+.lp-footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lp-footer-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.lp-footer-link:hover {
+  color: #1d4ed8;
+}
+
+.lp-footer-contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.lp-footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lp-footer-contact-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.lp-footer-contact-box:hover {
+  border-color: #cbd5e1;
+}
+
+.lp-footer-contact-text {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #002d72;
+}
+
+.lp-footer-contact-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #002d72;
+  flex-shrink: 0;
+}
+
+.lp-footer-bottom {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .lp-footer-bottom {
+    flex-direction: row;
+  }
+}
+
+.lp-footer-copyright {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.lp-footer-social {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  color: #002d72;
+}
+
+.lp-footer-social-link {
+  color: #002d72;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.lp-footer-social-link:hover {
+  color: #2563eb;
+}
+
+.lp-footer-social-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}

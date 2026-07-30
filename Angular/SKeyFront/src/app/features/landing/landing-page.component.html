@@ -1,29 +1,29 @@
 <div class="lp-root" dir="rtl">
   @if (!embedded) {
-  <header class="lp-navbar">
-    <div class="lp-container lp-navbar-inner">
-      <div class="lp-navbar-start">
-        <a routerLink="/" class="lp-logo-link">
-          <img src="/assets/images/logo.jpeg" class="lp-logo" />
-        </a>
-        <nav class="lp-nav">
-          <a href="javascript:void(0)" class="lp-nav-link lp-nav-link--active">Products</a>
-          <a href="#features" class="lp-nav-link">Features</a>
-          <a href="#pricing" class="lp-nav-link">Pricing</a>
-          <a href="#about" class="lp-nav-link">About</a>
-        </nav>
-      </div>
-      <div class="lp-navbar-end">
-        <a routerLink="/auth/login" class="lp-login-link">Login</a>
-        <skey-button variant="primary" size="md" link="/auth/register">
+    <header class="lp-navbar">
+      <div class="lp-container lp-navbar-inner">
+        <div class="lp-navbar-start">
+          <a routerLink="/" class="lp-logo-link">
+            <img src="/assets/images/logo.jpeg" class="lp-logo" />
+          </a>
+          <nav class="lp-nav">
+            <a href="#products" class="lp-nav-link lp-nav-link--active">Products</a>
+            <a href="#features" class="lp-nav-link">Features</a>
+            <a href="#pricing" class="lp-nav-link">Pricing</a>
+            <a href="#about" class="lp-nav-link">About</a>
+          </nav>
+        </div>
+        <div class="lp-navbar-end">
+          <a routerLink="/auth/login" class="lp-login-link">Login</a>
+          <skey-button variant="primary" size="md" link="/auth/register">
             Start Free Trial
-        </skey-button>
+          </skey-button>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
   }
 
-  <section class="lp-hero">
+  <section id="products" class="lp-hero">
     <div class="lp-hero-blob lp-hero-blob--tl"></div>
     <div class="lp-hero-blob lp-hero-blob--br"></div>
 
@@ -34,13 +34,11 @@
           ERP Solution first in the Saudi market
         </div>
 
-        <h1 class="lp-hero-title">
-         أعمالك كل ما تحتاجه لتنمية<br />في مكان واحد SKeyERP <br />
-        </h1>
+        <h1 class="lp-hero-title">أعمالك كل ما تحتاجه لتنمية<br />في مكان واحد SKeyERP <br /></h1>
 
         <p class="lp-hero-desc">
-          نظام محاسبي متكامل سهل الاستخدام ومصمم لدعم رؤية 2030 بنظام المملكة العربية
-          السعودية، إدارة المبيعات والمشتريات والعديد من المميزات الأخرى بكل دقة.
+          نظام محاسبي متكامل سهل الاستخدام ومصمم لدعم رؤية 2030 بنظام المملكة العربية السعودية،
+          إدارة المبيعات والمشتريات والعديد من المميزات الأخرى بكل دقة.
         </p>
 
         <div class="lp-hero-actions">
@@ -66,12 +64,12 @@
       <h3 class="lp-partners-heading">كن شريكنا في النجاح</h3>
       <div class="lp-partners-list">
         @for (partner of partners; track $index) {
-        <div class="lp-partner-item">
-          <div class="lp-partner-icon-box">
-            <span class="lp-partner-icon-letter">{{ partner[0] }}</span>
+          <div class="lp-partner-item">
+            <div class="lp-partner-icon-box">
+              <span class="lp-partner-icon-letter">{{ partner[0] }}</span>
+            </div>
+            <span class="lp-partner-name">{{ partner }}</span>
           </div>
-          <span class="lp-partner-name">{{ partner }}</span>
-        </div>
         }
       </div>
     </div>
@@ -81,33 +79,31 @@
     <div class="lp-container">
       <div class="lp-section-header">
         <h2 class="lp-section-title">المميزات الرئيسية</h2>
-        <p class="lp-section-desc">
-          حلول ذكية تم تصميمها لتبسيط عمليتك اليومية
-        </p>
+        <p class="lp-section-desc">حلول ذكية تم تصميمها لتبسيط عمليتك اليومية</p>
       </div>
 
       <div class="lp-features-grid">
         @for (feature of features; track $index) {
-        <skey-card [hoverable]="true">
-          <div class="lp-feature-item">
-            <div
-              class="lp-feature-icon"
-              [style.background-color]="feature.bg"
-              [style.color]="feature.iconColor"
-              [innerHTML]="feature.icon"
-            ></div>
-            <div>
-              <h3 class="lp-feature-title">{{ feature.title }}</h3>
-              <p class="lp-feature-desc">{{ feature.desc }}</p>
+          <skey-card [hoverable]="true">
+            <div class="lp-feature-item">
+              <div
+                class="lp-feature-icon"
+                [style.background-color]="feature.bg"
+                [style.color]="feature.iconColor"
+                [innerHTML]="feature.icon"
+              ></div>
+              <div>
+                <h3 class="lp-feature-title">{{ feature.title }}</h3>
+                <p class="lp-feature-desc">{{ feature.desc }}</p>
+              </div>
             </div>
-          </div>
-        </skey-card>
+          </skey-card>
         }
       </div>
     </div>
   </section>
 
-  <section class="lp-sectors">
+  <section id="pricing" class="lp-sectors">
     <div class="lp-sectors-blob lp-sectors-blob--tr"></div>
     <div class="lp-sectors-blob lp-sectors-blob--bl"></div>
 
@@ -120,18 +116,16 @@
           </p>
         </div>
         <div class="lp-sectors-header-btn">
-          <skey-button variant="success" size="lg">
-            عرض كافة القطاعات
-          </skey-button>
+          <skey-button variant="success" size="lg"> عرض كافة القطاعات </skey-button>
         </div>
       </div>
 
       <div class="lp-sectors-grid">
         @for (sector of sectors; track $index) {
-        <div class="lp-sector-card">
-          <div class="lp-sector-icon" [innerHTML]="sector.icon"></div>
-          <span class="lp-sector-label">{{ sector.label }}</span>
-        </div>
+          <div class="lp-sector-card">
+            <div class="lp-sector-icon" [innerHTML]="sector.icon"></div>
+            <span class="lp-sector-label">{{ sector.label }}</span>
+          </div>
         }
       </div>
     </div>
@@ -152,31 +146,63 @@
 
         <div class="lp-about-text-col">
           <div class="lp-about-text-group">
-            <h2 class="lp-about-heading">
-              SKeyERP هو منتج من Ultimate Solutions
-            </h2>
+            <h2 class="lp-about-heading">SKeyERP هو منتج من Ultimate Solutions</h2>
             <p class="lp-about-paragraph">
-              نحن في SKeyERP نساعدك على تنظيم وتطوير أعمالك لتصل إلى تجربة أكثر كفاءة وسهولة. نظام متكامل يجمع بين أقوى
-              الأدوات والتقنيات الحديثة ليعطيك رؤية واضحة وتحكم كامل في كل تفاصيل عملك.
+              نحن في SKeyERP نساعدك على تنظيم وتطوير أعمالك لتصل إلى تجربة أكثر كفاءة وسهولة. نظام
+              متكامل يجمع بين أقوى الأدوات والتقنيات الحديثة ليعطيك رؤية واضحة وتحكم كامل في كل
+              تفاصيل عملك.
             </p>
           </div>
 
           <div class="lp-about-points">
             <div class="lp-about-point">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#1d4ed8" class="lp-about-check">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="#1d4ed8"
+                class="lp-about-check"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               <p class="lp-about-point-text">تحكم ذكي وإدارة بكفاءة عالية</p>
             </div>
             <div class="lp-about-point">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#1d4ed8" class="lp-about-check">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="#1d4ed8"
+                class="lp-about-check"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               <p class="lp-about-point-text">واجهة سهلة وتجربة مرنة</p>
             </div>
             <div class="lp-about-point">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#1d4ed8" class="lp-about-check">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2.5"
+                stroke="#1d4ed8"
+                class="lp-about-check"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
               </svg>
               <p class="lp-about-point-text">أمان تام وحماية للبيانات</p>
             </div>
@@ -185,4 +211,176 @@
       </div>
     </div>
   </section>
+
+  <section class="lp-cta">
+    <div class="lp-container">
+      <div class="lp-cta-card">
+        <div class="lp-cta-circle lp-cta-circle--tr"></div>
+        <div class="lp-cta-circle lp-cta-circle--bl"></div>
+
+        <div class="lp-cta-content">
+          <h2 class="lp-cta-title">ابدأ ثورة عملك الرقمية اليوم</h2>
+          <p class="lp-cta-desc">
+            انضم إلى آلاف الشركات الناجحة التي تستخدم Skey ERP لإدارة أعمالها.
+            <br class="lp-break-md" />
+            لا يتطلب الأمر سوى دقائق للبدء.
+          </p>
+
+          <div class="lp-cta-actions">
+            <skey-button
+              variant="cta-primary"
+              size="lg"
+              class="lp-cta-btn"
+              [block]="true"
+              link="/auth/register"
+            >
+              جرب مجاناً لمدة 14 يوم
+            </skey-button>
+            <skey-button
+              variant="cta-secondary"
+              size="lg"
+              class="lp-cta-btn"
+              [block]="true"
+              link="/auth/login"
+            >
+              تواصل مع المبيعات
+            </skey-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="lp-footer">
+    <div class="lp-container">
+      <div class="lp-footer-grid">
+        <div class="lp-footer-col">
+          <div class="lp-footer-logo-wrap">
+            <img src="/assets/images/logo.jpeg" class="lp-footer-logo" />
+          </div>
+          <p class="lp-footer-brand-desc">
+            نظام إدارة موارد المؤسسات المتكامل والذكي لتطوير وتنمية أعمالك في المستقبل.
+          </p>
+        </div>
+
+        <div class="lp-footer-col">
+          <h4 class="lp-footer-heading">المنتج</h4>
+          <ul class="lp-footer-links">
+            <li><a class="lp-footer-link">Product Tour</a></li>
+            <li><a class="lp-footer-link">Modules</a></li>
+            <li><a class="lp-footer-link">API Documentation</a></li>
+            <li><a class="lp-footer-link">Security</a></li>
+          </ul>
+        </div>
+
+        <div class="lp-footer-col">
+          <h4 class="lp-footer-heading">الشركة</h4>
+          <ul class="lp-footer-links">
+            <li><a class="lp-footer-link">About Us</a></li>
+            <li><a class="lp-footer-link">Contact Support</a></li>
+            <li><a class="lp-footer-link">Blog</a></li>
+            <li><a class="lp-footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="lp-footer-col">
+          <h4 class="lp-footer-heading">تواصل معنا</h4>
+          <p class="lp-footer-contact-label">للدعم أو للاستفسار</p>
+          <div class="lp-footer-contact-list">
+            <a href="mailto:info@skeyerp.com" class="lp-footer-contact-box">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="lp-footer-contact-icon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+                />
+              </svg>
+              <span class="lp-footer-contact-text">khaledmamdooh77@gmail.com</span>
+            </a>
+
+            <a href="tel:+967779690330" class="lp-footer-contact-box">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="lp-footer-contact-icon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 6.75Z"
+                />
+              </svg>
+              <span class="lp-footer-contact-text">+967 779 690 330</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="lp-footer-bottom">
+        <div class="lp-footer-social">
+          <a class="lp-footer-social-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="lp-footer-social-icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253"
+              />
+            </svg>
+          </a>
+          <a class="lp-footer-social-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="lp-footer-social-icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
+              />
+            </svg>
+          </a>
+          <a class="lp-footer-social-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              stroke="currentColor"
+              class="lp-footer-social-icon"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"
+              />
+            </svg>
+          </a>
+        </div>
+        <p class="lp-footer-copyright">
+          Skey ERP. All rights reserved. Registered 2024 &copy; in KSA
+        </p>
+      </div>
+    </div>
+  </footer>
 </div>
