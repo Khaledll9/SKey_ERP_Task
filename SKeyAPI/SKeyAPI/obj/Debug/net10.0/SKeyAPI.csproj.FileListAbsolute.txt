@@ -168,3 +168,4 @@ D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\zh-Hans\Microsoft.
 D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\Scalar.AspNetCore.dll
 D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Full-Stack\SKey-ERP_Task\SKeyAPI\SKeyAPI\bin\Debug\net10.0\BCrypt-Net-Next.dll

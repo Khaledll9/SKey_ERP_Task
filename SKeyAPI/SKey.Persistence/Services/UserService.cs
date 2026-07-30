@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SKey.Application.DTOs;
 using SKey.Application.Interfaces;
 using SKey.Domain.Entities;
@@ -10,11 +11,16 @@ public class UserService : IUserService
 {
     private readonly AppDbContext _context;
     private readonly JwtTokenGenerator _jwtTokenGenerator;
+    private readonly IPasswordHasher _passwordHasher; 
 
-    public UserService(AppDbContext context, JwtTokenGenerator jwtTokenGenerator)
+    public UserService(
+        AppDbContext context,
+        JwtTokenGenerator jwtTokenGenerator,
+        IPasswordHasher passwordHasher) 
     {
         _context = context;
         _jwtTokenGenerator = jwtTokenGenerator;
+        _passwordHasher = passwordHasher;
     }
 
     public async Task<ServiceResult<string>> RegisterUserAsync(RegisterUserDto registerUserDto)
@@ -35,10 +41,9 @@ public class UserService : IUserService
             UserName = registerUserDto.UserName,
             PhoneNumber = registerUserDto.PhoneNumber,
             Email = registerUserDto.Email,
-            Password = registerUserDto.Password,
+            Password = _passwordHasher.HashPassword(registerUserDto.Password),
             RoleId = Guid.Empty
         };
-
 
         await _context.Users.AddAsync(user);
         var result = await _context.SaveChangesAsync();
@@ -52,21 +57,46 @@ public class UserService : IUserService
 
         return ServiceResult<string>.Failure("حدث خطأ أثناء حفظ البيانات");
     }
+
     public async Task<ServiceResult<string>> SignInAsync(SignInDto signInDto)
     {
-        var user = await _context.Users
-            .AsNoTracking()
-            .FirstOrDefaultAsync(u => u.Email == signInDto.EmailOrPhone || u.PhoneNumber == signInDto.EmailOrPhone);
+        bool isEmail = signInDto.EmailOrPhone.Contains("@");
 
-        if (user == null || user.Password != signInDto.Password)
+        User? user = null;
+
+        if (isEmail)
         {
-            return ServiceResult<string>.Failure("كلمة المرور | البريد الالكتروني او كلمة السر غير صحيحة");
+            user = await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Email == signInDto.EmailOrPhone);
+
+            if (user == null)
+            {
+                return ServiceResult<string>.Failure("البريد الإلكتروني غير مسجل لدينا.");
+            }
         }
+        else
+        {
+            user = await _context.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.PhoneNumber == signInDto.EmailOrPhone);
+
+            if (user == null)
+            {
+                return ServiceResult<string>.Failure("رقم الهاتف غير مسجل لدينا.");
+            }
+        }
+
+        if (!_passwordHasher.VerifyPassword(signInDto.Password, user.Password))
+        {
+            return ServiceResult<string>.Failure("كلمة المرور غير صحيحة.");
+        }
+
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return ServiceResult<string>.Success(token, "تم إنشاء المستخدم بنجاح.");
-
+        return ServiceResult<string>.Success(token, "تم تسجيل الدخول بنجاح.");
     }
+
     public async Task<ServiceResult<bool>> CreateUserAsync(CreateUserDto dto)
     {
         if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
@@ -79,7 +109,7 @@ public class UserService : IUserService
             UserName = dto.UserName,
             Email = dto.Email,
             PhoneNumber = string.Empty,
-            Password = "Password123!", 
+            Password = _passwordHasher.HashPassword("Password123!"),
             AccountStatus = dto.AccountStatus,
             RoleId = dto.RoleId ?? Guid.Empty
         };

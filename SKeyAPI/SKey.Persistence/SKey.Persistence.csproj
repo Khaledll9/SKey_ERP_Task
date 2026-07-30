@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\SKey.Application\SKey.Application.csproj" />
     <ProjectReference Include="..\SKey.Domain\SKey.Domain.csproj" />
+    <ProjectReference Include="..\SKey.Infrastructure\SKey.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

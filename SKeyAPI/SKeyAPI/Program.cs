@@ -3,7 +3,7 @@ using Scalar.AspNetCore;
 using SKey.Application.Interfaces;
 using SKey.Persistence.Context;
 using SKey.Persistence.Services;
-
+using SKey.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<JwtTokenGenerator>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 
 builder.Services.AddCors(options =>
 {

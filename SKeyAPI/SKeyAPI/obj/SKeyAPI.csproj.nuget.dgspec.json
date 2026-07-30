@@ -741,6 +741,12 @@
         "net10.0": {
           "framework": "net10.0",
           "targetAlias": "net10.0",
+          "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.2.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -1069,6 +1075,9 @@
               },
               "D:\\Full-Stack\\SKey-ERP_Task\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj": {
                 "projectPath": "D:\\Full-Stack\\SKey-ERP_Task\\SKeyAPI\\SKey.Domain\\SKey.Domain.csproj"
+              },
+              "D:\\Full-Stack\\SKey-ERP_Task\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj": {
+                "projectPath": "D:\\Full-Stack\\SKey-ERP_Task\\SKeyAPI\\SKey.Infrastructure\\SKey.Infrastructure.csproj"
               }
             }
           }
