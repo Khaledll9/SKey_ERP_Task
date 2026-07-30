@@ -1,4 +1,4 @@
-import { Component, Input, booleanAttribute, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, booleanAttribute, inject, ChangeDetectionStrategy, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -26,10 +26,13 @@ interface Sector {
   styleUrl: './landing-page.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LandingPageComponent {
+export class LandingPageComponent implements AfterViewInit {
   private sanitizer = inject(DomSanitizer);
+  private cdr = inject(ChangeDetectorRef);
 
   @Input({ transform: booleanAttribute }) embedded = false;
+
+  protected activeSection = 'products';
 
   protected readonly partners = ['APEX', 'Pinnacle', 'NexGen', 'ELITE', 'InnoTech'];
 
@@ -120,6 +123,33 @@ export class LandingPageComponent {
       label: 'والمزيد',
     },
   ];
+
+  protected setActive(section: string): void {
+    this.activeSection = section;
+  }
+
+  ngAfterViewInit(): void {
+    const sections = ['products', 'features', 'pricing', 'about'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            if (id && sections.includes(id)) {
+              this.activeSection = id;
+              this.cdr.detectChanges();
+            }
+          }
+        }
+      },
+      { rootMargin: '-40% 0px -55% 0px' }
+    );
+
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    }
+  }
 
   constructor() {
     this.features = this.features.map((f) => ({

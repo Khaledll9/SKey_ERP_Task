@@ -53,19 +53,11 @@ export class UserFormModalComponent implements OnInit {
     this.userForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: [''],
       role: ['admin', Validators.required],
       status: ['active', Validators.required],
       mobile: [''],
       department: ['']
     });
-
-    if (this.mode === 'create') {
-      this.userForm.get('password')?.setValidators([Validators.required]);
-    } else {
-      this.userForm.get('password')?.clearValidators();
-    }
-    this.userForm.get('password')?.updateValueAndValidity();
 
     if (this.mode === 'edit' && this.user) {
       this.userForm.patchValue({
@@ -74,8 +66,7 @@ export class UserFormModalComponent implements OnInit {
         role: this.user.role,
         status: this.user.status,
         mobile: '',
-        department: '',
-        password: ''
+        department: ''
       });
     }
   }
@@ -99,7 +90,7 @@ export class UserFormModalComponent implements OnInit {
       const payload: CreateUserRequest = {
         name: formValue.name,
         email: formValue.email,
-        password: formValue.password,
+        password: 'Default@123',
         role: formValue.role,
         status: formValue.status,
         mobile: formValue.mobile,

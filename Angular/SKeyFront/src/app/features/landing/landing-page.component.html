@@ -7,10 +7,10 @@
             <img src="/assets/images/logo.jpeg" class="lp-logo" />
           </a>
           <nav class="lp-nav">
-            <a href="#products" class="lp-nav-link lp-nav-link--active">Products</a>
-            <a href="#features" class="lp-nav-link">Features</a>
-            <a href="#pricing" class="lp-nav-link">Pricing</a>
-            <a href="#about" class="lp-nav-link">About</a>
+            <a href="#products" class="lp-nav-link" [class.lp-nav-link--active]="activeSection === 'products'" (click)="setActive('products')">Products</a>
+            <a href="#features" class="lp-nav-link" [class.lp-nav-link--active]="activeSection === 'features'" (click)="setActive('features')">Features</a>
+            <a href="#pricing" class="lp-nav-link" [class.lp-nav-link--active]="activeSection === 'pricing'" (click)="setActive('pricing')">Pricing</a>
+            <a href="#about" class="lp-nav-link" [class.lp-nav-link--active]="activeSection === 'about'" (click)="setActive('about')">About</a>
           </nav>
         </div>
         <div class="lp-navbar-end">
