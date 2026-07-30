@@ -48,13 +48,13 @@
 
 /* Variants */
 .skey-btn--primary {
-  background-color: var(--color-brand-primary);
+  background-color: #00136F;
   color: #fff;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 .skey-btn--primary:hover:not(:disabled) {
-  background-color: var(--color-brand-hover);
+  background-color: #001a8a;
 }
 
 .skey-btn--default {
