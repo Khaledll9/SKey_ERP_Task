@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SKeyAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0ba2f92674a674f2b7f8de43bf296af9de116a00")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+969bf0b052c1369e3efeaefbca2c88ba9ccc158d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SKeyAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SKeyAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

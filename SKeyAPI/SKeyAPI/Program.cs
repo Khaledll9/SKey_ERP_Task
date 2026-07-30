@@ -1,12 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using SKey.Application.Interfaces;
+using SKey.Infrastructure.Services;
 using SKey.Persistence.Context;
 using SKey.Persistence.Services;
-using SKey.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
@@ -24,7 +23,7 @@ builder.Services.AddCors(options =>
     {
         policy.WithOrigins(
                 "http://localhost:4200",
-                "https://localhost:4200" 
+                "https://localhost:4200"
               )
               .AllowAnyHeader()
               .AllowAnyMethod()
@@ -36,7 +35,6 @@ var app = builder.Build();
 
 app.UseCors("AllowFrontend");
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -44,15 +42,28 @@ if (app.Environment.IsDevelopment())
     app.MapScalarApiReference(options =>
     {
         options.WithTitle("SKey ERP API Reference")
-               .WithTheme(ScalarTheme.Purple) 
+               .WithTheme(ScalarTheme.Purple)
                .WithDefaultHttpClient(ScalarTarget.JavaScript, ScalarClient.Axios);
     });
+
+    // Automatic Migration & Seeding on Startup
+    using (var scope = app.Services.CreateScope())
+    {
+        var services = scope.ServiceProvider;
+        try
+        {
+            var context = services.GetRequiredService<AppDbContext>();
+            context.Database.Migrate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred seeding the DB: {ex.Message}");
+        }
+    }
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
