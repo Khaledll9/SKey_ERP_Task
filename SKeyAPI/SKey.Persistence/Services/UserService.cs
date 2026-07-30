@@ -112,4 +112,18 @@ public class UserService : IUserService
 
         return ServiceResult<bool>.Success(true, "تم تعديل بيانات المستخدم بنجاح.");
     }
+
+    public async Task<ServiceResult<bool>> DeleteUserAsync(Guid id)
+    {
+        var user = await _context.Users.FindAsync(id);
+        if (user == null)
+        {
+            return ServiceResult<bool>.Failure("المستخدم غير موجود.");
+        }
+
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<bool>.Success(true, "تم حذف المستخدم بنجاح.");
+    }
 }

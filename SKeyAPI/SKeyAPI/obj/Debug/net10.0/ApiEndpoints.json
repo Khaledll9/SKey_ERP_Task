@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "SKeyAPI.Controllers.UsersController",
+    "Method": "Delete",
+    "RelativePath": "api/Users/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SKeyAPI.Controllers.UsersController",
     "Method": "Create",
     "RelativePath": "api/Users/create",
     "HttpMethod": "POST",

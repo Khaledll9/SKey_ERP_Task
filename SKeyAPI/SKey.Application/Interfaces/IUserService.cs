@@ -8,4 +8,5 @@ public interface IUserService
     Task<ServiceResult<string>> SignInAsync(SignInDto signInDto);
     Task<ServiceResult<bool>> CreateUserAsync(CreateUserDto dto);
     Task<ServiceResult<bool>> UpdateUserAsync(UpdateUserDto dto);
+    Task<ServiceResult<bool>> DeleteUserAsync(Guid id);
 }
