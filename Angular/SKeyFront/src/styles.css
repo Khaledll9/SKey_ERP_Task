@@ -1,56 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
 
-@import 'tailwindcss';
+:root {
+  --font-sans: 'Tajawal', sans-serif;
 
+  --color-brand: #0b1e60;
+  --color-brand-primary: #102f90;
+  --color-brand-hover: #153fc0;
+  --color-brand-light: #eef2ff;
 
-@font-face {
-  font-family: 'Lama Sans';
-  src: url('/assets/fonts/LamaSans-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
+  --color-accent: #16a34a;
+  --color-accent-hover: #15803d;
+
+  --color-cta: #5df297;
+  --color-cta-hover: #4de086;
+  --color-cta-text: #0c255c;
+  --color-outline: #3577e3;
+  --color-outline-hover: #4e8cfc;
+
+  --shadow-soft-card: 0 20px 40px rgba(15, 23, 42, 0.08);
+  --shadow-brand-md: 0 4px 6px -1px color-mix(in srgb, #0b1e60 25%, transparent), 0 2px 4px -2px color-mix(in srgb, #0b1e60 25%, transparent);
+
+  --radius-card-sm: 0.5rem;
+  --radius-card-md: 0.75rem;
+  --radius-card-lg: 1rem;
 }
-
-@font-face {
-  font-family: 'Lama Sans';
-  src: url('/assets/fonts/LamaSans-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lama Sans';
-  src: url('/assets/fonts/LamaSans-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lama Sans';
-  src: url('/assets/fonts/LamaSans-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lama Sans';
-  src: url('/assets/fonts/LamaSans-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Lama Sans';
-  src: url('/assets/fonts/LamaSans-ExtraBold.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
 
 html {
   direction: rtl;
@@ -59,7 +32,22 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  font-family: 'Lama Sans', sans-serif;
+  font-family: 'Tajawal', sans-serif;
+  font-size: 1.125rem;
   background-color: #f8fafc;
   color: #0f172a;
+}
+
+input::-ms-reveal,
+input::-ms-clear {
+  display: none !important;
+}
+
+input::-webkit-contacts-auto-fill-button,
+input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
 }
