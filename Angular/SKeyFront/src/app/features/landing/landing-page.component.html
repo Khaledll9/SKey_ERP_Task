@@ -59,4 +59,51 @@
       </div>
     </div>
   </section>
+
+  <section class="lp-partners">
+    <div class="lp-container lp-partners-inner">
+      <p class="lp-partners-label">موثوق من قِبَل شركات رائدة</p>
+      <h3 class="lp-partners-heading">كن شريكنا في النجاح</h3>
+      <div class="lp-partners-list">
+        @for (partner of partners; track $index) {
+        <div class="lp-partner-item">
+          <div class="lp-partner-icon-box">
+            <span class="lp-partner-icon-letter">{{ partner[0] }}</span>
+          </div>
+          <span class="lp-partner-name">{{ partner }}</span>
+        </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="lp-features">
+    <div class="lp-container">
+      <div class="lp-section-header">
+        <h2 class="lp-section-title">المميزات الرئيسية</h2>
+        <p class="lp-section-desc">
+          حلول ذكية تم تصميمها لتبسيط عمليتك اليومية
+        </p>
+      </div>
+
+      <div class="lp-features-grid">
+        @for (feature of features; track $index) {
+        <skey-card [hoverable]="true">
+          <div class="lp-feature-item">
+            <div
+              class="lp-feature-icon"
+              [style.background-color]="feature.bg"
+              [style.color]="feature.iconColor"
+              [innerHTML]="feature.icon"
+            ></div>
+            <div>
+              <h3 class="lp-feature-title">{{ feature.title }}</h3>
+              <p class="lp-feature-desc">{{ feature.desc }}</p>
+            </div>
+          </div>
+        </skey-card>
+        }
+      </div>
+    </div>
+  </section>
 </div>
