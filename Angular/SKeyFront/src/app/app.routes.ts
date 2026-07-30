@@ -41,8 +41,28 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/users/users-page.component').then((m) => m.UsersPageComponent)
       },
-     
+      {
+        path: 'inventory',
+        loadComponent: () =>
+          import('./features/inventory/inventory.component').then((m) => m.InventoryComponent)
+      },
+      {
+        path: 'reports',
+        loadComponent: () =>
+          import('./features/reports/reports.component').then((m) => m.ReportsComponent)
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./features/settings/settings.component').then((m) => m.SettingsComponent)
+      }
     ]
+  },
+
+  {
+    path: 'landing',
+    loadComponent: () =>
+      import('./features/landing/landing-page.component').then((m) => m.LandingPageComponent)
   },
 
   { path: '**', redirectTo: 'auth/login' }
