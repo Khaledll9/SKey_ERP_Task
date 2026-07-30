@@ -21,13 +21,13 @@ public class UserService : IUserService
     {
         if (await _context.Users.AnyAsync(u => u.Email == registerUserDto.Email))
         {
-            return ServiceResult<string>.Failure("The email address is already registered.");
+            return ServiceResult<string>.Failure("البريد الإلكتروني مستخدم من قبل بالفعل.");
         }
 
         if (!string.IsNullOrEmpty(registerUserDto.PhoneNumber) &&
             await _context.Users.AnyAsync(u => u.PhoneNumber == registerUserDto.PhoneNumber))
         {
-            return ServiceResult<string>.Failure("The phone number is already registered.");
+            return ServiceResult<string>.Failure("رقم الهاتف مستخدم من قبل بالفعل.");
         }
 
         var user = new User
@@ -47,10 +47,10 @@ public class UserService : IUserService
 
         if (result > 0)
         {
-            return ServiceResult<string>.Success(token, "User registered successfully.");
+            return ServiceResult<string>.Success(token, "تم تسجيل المستخدم بنجاح");
         }
 
-        return ServiceResult<string>.Failure("An error occurred while saving the data.");
+        return ServiceResult<string>.Failure("حدث خطأ أثناء حفظ البيانات");
     }
     public async Task<ServiceResult<string>> SignInAsync(SignInDto signInDto)
     {
@@ -60,11 +60,33 @@ public class UserService : IUserService
 
         if (user == null || user.Password != signInDto.Password)
         {
-            return ServiceResult<string>.Failure("Something went wrong, User Registration failed.");
+            return ServiceResult<string>.Failure("كلمة المرور | البريد الالكتروني او كلمة السر غير صحيحة");
         }
         var token = _jwtTokenGenerator.GenerateToken(user);
 
-        return ServiceResult<string>.Success(token, "Sign in successful.");
+        return ServiceResult<string>.Success(token, "تم إنشاء المستخدم بنجاح.");
 
+    }
+    public async Task<ServiceResult<bool>> CreateUserAsync(CreateUserDto dto)
+    {
+        if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
+        {
+            return ServiceResult<bool>.Failure("البريد الإلكتروني مستخدم بالفعل.");
+        }
+
+        var user = new User
+        {
+            UserName = dto.UserName,
+            Email = dto.Email,
+            PhoneNumber = string.Empty,
+            Password = "Password123!", 
+            AccountStatus = dto.AccountStatus,
+            RoleId = dto.RoleId ?? Guid.Empty
+        };
+
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+
+        return ServiceResult<bool>.Success(true, "تم إنشاء المستخدم بنجاح.");
     }
 }

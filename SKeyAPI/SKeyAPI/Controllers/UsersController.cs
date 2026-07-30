@@ -39,4 +39,16 @@ public class UsersController : ControllerBase
 
         return Ok(new { token = result.Data, message = result.Message });
     }
+    [HttpPost("create")]
+    public async Task<IActionResult> Create([FromBody] CreateUserDto dto)
+    {
+        var result = await _userService.CreateUserAsync(dto);
+
+        if (!result.IsSuccess)
+        {
+            return BadRequest(result);
+        }
+
+        return Ok(result);
+    }
 }
