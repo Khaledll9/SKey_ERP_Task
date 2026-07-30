@@ -30,19 +30,21 @@ public class UserService : IUserService
             return ServiceResult<string>.Failure("البريد الإلكتروني مستخدم من قبل بالفعل.");
         }
 
-        if (!string.IsNullOrEmpty(registerUserDto.PhoneNumber) &&
+        if (!string.IsNullOrWhiteSpace(registerUserDto.PhoneNumber) &&
             await _context.Users.AnyAsync(u => u.PhoneNumber == registerUserDto.PhoneNumber))
         {
             return ServiceResult<string>.Failure("رقم الهاتف مستخدم من قبل بالفعل.");
         }
 
+        var defaultRoleId = Guid.Parse("11111111-1111-1111-1111-111111111111");
+
         var user = new User
         {
             UserName = registerUserDto.UserName,
-            PhoneNumber = registerUserDto.PhoneNumber,
+            PhoneNumber = string.IsNullOrWhiteSpace(registerUserDto.PhoneNumber) ? null : registerUserDto.PhoneNumber,
             Email = registerUserDto.Email,
             Password = _passwordHasher.HashPassword(registerUserDto.Password),
-            RoleId = Guid.Empty
+            RoleId = defaultRoleId
         };
 
         await _context.Users.AddAsync(user);
@@ -72,7 +74,7 @@ public class UserService : IUserService
 
             if (user == null)
             {
-                return ServiceResult<string>.Failure("البريد الإلكتروني غير مسجل لدينا.");
+                return ServiceResult<string>.Failure("البريد الإلكتروني او كلمة السر غير صحيحة.");
             }
         }
         else
@@ -83,13 +85,13 @@ public class UserService : IUserService
 
             if (user == null)
             {
-                return ServiceResult<string>.Failure("رقم الهاتف غير مسجل لدينا.");
+                return ServiceResult<string>.Failure("رقم الهاتف او كلمة السر غير صحيحة.");
             }
         }
 
         if (!_passwordHasher.VerifyPassword(signInDto.Password, user.Password))
         {
-            return ServiceResult<string>.Failure("كلمة المرور غير صحيحة.");
+            return ServiceResult<string>.Failure("البيانات غير صحيحة حاول مرة اخرى.");
         }
 
         var token = _jwtTokenGenerator.GenerateToken(user);
@@ -108,7 +110,7 @@ public class UserService : IUserService
         {
             UserName = dto.UserName,
             Email = dto.Email,
-            PhoneNumber = string.Empty,
+            PhoneNumber = null,
             Password = _passwordHasher.HashPassword("Password123!"),
             AccountStatus = dto.AccountStatus,
             RoleId = dto.RoleId ?? Guid.Empty

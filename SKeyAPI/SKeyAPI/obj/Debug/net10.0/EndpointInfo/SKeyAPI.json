@@ -210,7 +210,6 @@
       "RegisterUserDto": {
         "required": [
           "userName",
-          "phoneNumber",
           "email",
           "password"
         ],
@@ -220,7 +219,10 @@
             "type": "string"
           },
           "phoneNumber": {
-            "type": "string"
+            "type": [
+              "null",
+              "string"
+            ]
           },
           "email": {
             "type": "string"

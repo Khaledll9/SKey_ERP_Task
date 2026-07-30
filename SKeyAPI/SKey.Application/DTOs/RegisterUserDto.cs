@@ -8,8 +8,7 @@ public class RegisterUserDto
     [Required(ErrorMessage = "اسم المستخدم مطلوب")]
 
     public string UserName { get; set; } = string.Empty;
-    [Required(ErrorMessage = "رقم الهاتف مطلوب")]
-    public string PhoneNumber { get; set; } = string.Empty;
+    public string? PhoneNumber { get; set; }
     [Required(ErrorMessage = "البريد الإلكتروني مطلوب")]
     [EmailAddress(ErrorMessage = "صيغة البريد الإلكتروني غير صحيحة")]
     public string Email { get; set; } = string.Empty;
