@@ -10,7 +10,6 @@ interface ApiUserDto {
   userName: string;
   phoneNumber: string;
   email: string;
-  age: number;
   accountStatus: number;
   roleId: string;
   roleName?: string | null;
@@ -66,7 +65,6 @@ export class UsersService {
       email: payload.email,
       password: payload.password,
       phoneNumber: payload.mobile?.trim() || this.fallbackPhone(),
-      age: 18,
       accountStatus: payload.status === 'active' ? 0 : 1,
       roleId: this.toRoleId(payload.role)
     };
@@ -87,7 +85,6 @@ export class UsersService {
       userName: payload.name,
       email: payload.email,
       phoneNumber: payload.mobile?.trim() || this.fallbackPhone(),
-      age: 18,
       accountStatus: payload.status === 'active' ? 0 : 1,
       roleId: this.toRoleId(payload.role),
       password: ''

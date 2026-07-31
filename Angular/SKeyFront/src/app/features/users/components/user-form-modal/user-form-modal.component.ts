@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CreateUserRequest, UpdateUserRequest, UserListDto } from '../../models/user.model';
@@ -30,8 +30,9 @@ export class UserFormModalComponent implements OnInit {
   @Output() closed = new EventEmitter<void>();
   @Output() saved = new EventEmitter<void>();
 
-  loading = false;
-  errorMessage: string | null = null;
+  loading = signal(false);
+  errorMessage = signal<string | null>(null);
+  successMessage = signal<string | null>(null);
   userForm!: FormGroup;
 
   roleOptions: SkeySelectOption[] = [
@@ -55,8 +56,7 @@ export class UserFormModalComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       role: ['admin', Validators.required],
       status: ['active', Validators.required],
-      mobile: [''],
-      department: ['']
+      mobile: ['']
     });
 
     if (this.mode === 'edit' && this.user) {
@@ -65,25 +65,22 @@ export class UserFormModalComponent implements OnInit {
         email: this.user.email,
         role: this.user.role,
         status: this.user.status,
-        mobile: '',
-        department: ''
+        mobile: ''
       });
     }
   }
 
   onClose() {
-    if (this.loading) return;
+    if (this.loading()) return;
     this.closed.emit();
   }
 
   submit() {
-    if (!this.userForm.valid) {
-      this.userForm.markAllAsTouched();
-      return;
-    }
+    if (!this.userForm.valid || this.loading()) return;
 
-    this.loading = true;
-    this.errorMessage = null;
+    this.loading.set(true);
+    this.errorMessage.set(null);
+    this.successMessage.set(null);
     const formValue = this.userForm.getRawValue();
 
     if (this.mode === 'create') {
@@ -93,19 +90,14 @@ export class UserFormModalComponent implements OnInit {
         password: 'Default@123',
         role: formValue.role,
         status: formValue.status,
-        mobile: formValue.mobile,
-        department: formValue.department,
-        tenantId: 'default'
+        mobile: formValue.mobile
       };
 
       this.usersService.createUser(payload).subscribe({
-        next: () => {
-          this.loading = false;
-          this.saved.emit();
-        },
+        next: () => this.onSuccess('تمت إضافة المستخدم بنجاح'),
         error: (err) => {
-          this.loading = false;
-          this.errorMessage = err?.error?.message || 'فشل حفظ المستخدم';
+          this.loading.set(false);
+          this.errorMessage.set(err?.error?.message || 'فشل حفظ المستخدم');
         }
       });
       return;
@@ -117,19 +109,23 @@ export class UserFormModalComponent implements OnInit {
       email: formValue.email,
       role: formValue.role,
       status: formValue.status,
-      mobile: formValue.mobile,
-      department: formValue.department
+      mobile: formValue.mobile
     };
 
     this.usersService.updateUser(payload).subscribe({
-      next: () => {
-        this.loading = false;
-        this.saved.emit();
-      },
+      next: () => this.onSuccess('تم تحديث بيانات المستخدم بنجاح'),
       error: (err) => {
-        this.loading = false;
-        this.errorMessage = err?.error?.message || 'فشل حفظ المستخدم';
+        this.loading.set(false);
+        this.errorMessage.set(err?.error?.message || 'فشل حفظ المستخدم');
       }
     });
+  }
+
+  private onSuccess(msg: string): void {
+    this.loading.set(false);
+    this.successMessage.set(msg);
+    setTimeout(() => {
+      this.saved.emit();
+    }, 1200);
   }
 }

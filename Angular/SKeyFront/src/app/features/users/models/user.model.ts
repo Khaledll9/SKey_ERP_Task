@@ -13,14 +13,12 @@ export interface UserListDto {
 }
 
 export interface CreateUserRequest {
-  tenantId: string;
   name: string;
   email: string;
   password: string;
   role: UserRole;
   status: 'active' | 'inactive';
   mobile?: string;
-  department?: string;
 }
 
 export interface UpdateUserRequest {
@@ -30,5 +28,4 @@ export interface UpdateUserRequest {
   role: UserRole;
   status: 'active' | 'inactive';
   mobile?: string;
-  department?: string;
 }

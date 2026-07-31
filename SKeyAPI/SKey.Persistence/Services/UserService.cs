@@ -124,6 +124,11 @@ public class UserService : IUserService
 
     public async Task<ServiceResult<bool>> UpdateUserAsync(UpdateUserDto dto)
     {
+        if (await _context.Users.AnyAsync(u => u.Email == dto.Email && u.Id != dto.Id))
+        {
+            return ServiceResult<bool>.Failure("البريد الإلكتروني مستخدم بالفعل بواسطة حساب آخر.");
+        }
+
         var user = await _context.Users.FindAsync(dto.Id);
         if (user == null)
         {

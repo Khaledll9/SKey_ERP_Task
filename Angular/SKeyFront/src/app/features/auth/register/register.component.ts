@@ -75,7 +75,7 @@ export class RegisterComponent {
       next: () => this.loading.set(false),
       error: (err) => {
         this.loading.set(false);
-        this.errorMessage.set(err?.error?.message || 'فشل إنشاء الحساب. حدث خطا في الخادم حاول مرة أخرى.');
+        this.errorMessage.set(err?.error?.message || 'فشل إنشاء الحساب. حدث خطا في الخادم حاول مرة أخرى لاحقاً.');
       }
     });
   }

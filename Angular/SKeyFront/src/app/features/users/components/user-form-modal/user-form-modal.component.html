@@ -7,7 +7,7 @@
       <button
         type="button"
         (click)="onClose()"
-        [disabled]="loading"
+        [disabled]="loading()"
         class="modal-close"
         aria-label="إغلاق">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="modal-close-icon">
@@ -47,20 +47,24 @@
           </skey-select>
         </div>
 
-        @if (errorMessage) {
-          <p class="modal-error">{{ errorMessage }}</p>
+        @if (successMessage()) {
+          <p class="modal-success">{{ successMessage() }}</p>
+        }
+
+        @if (errorMessage()) {
+          <p class="modal-error">{{ errorMessage() }}</p>
         }
 
         <div class="modal-footer">
           <button
             type="button"
             (click)="onClose()"
-            [disabled]="loading"
+            [disabled]="loading()"
             class="modal-cancel">
             إلغاء
           </button>
 
-          <skey-button variant="primary" type="submit" [disabled]="userForm.invalid" [loading]="loading">
+          <skey-button variant="primary" type="submit" [disabled]="userForm.invalid" [loading]="loading()">
             حفظ البيانات
           </skey-button>
         </div>
